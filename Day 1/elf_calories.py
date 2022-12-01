@@ -11,12 +11,12 @@ def main():
     calories_per_elf = []
     all_calorie_totals = []
     
-    for item in list_of_strings:
+    for food_item in list_of_strings:
         # For every item, it takes that string value and turns it into an integer, and adds it to the list
         # calories_per_elf.
-        if bool(item) == True:
-            item = int(item)
-            calories_per_elf.append(item)
+        if bool(food_item) == True:
+            item = int(food_item)
+            calories_per_elf.append(food_item)
         else:
         # When it comes across an empty list value, it sums up the calorie values it has so far in calories_per_elf, adds
         # that total to the empty array all_calorie_totals, and then clears the elf_calorie_sum list.
