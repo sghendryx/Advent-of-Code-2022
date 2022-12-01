@@ -27,7 +27,6 @@ def main():
     # Now all we need to do is find the largest number in the new list!
     all_calorie_totals.sort()
     print("Elf with the highest calorie value is: ", all_calorie_totals[-1])
-
     print("Sum of the calories for the 3 elves with the most calories: ", sum(all_calorie_totals[-3:]))
 
 main()
