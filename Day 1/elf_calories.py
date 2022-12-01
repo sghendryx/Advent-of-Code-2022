@@ -15,7 +15,7 @@ def main():
         # For every food_item, it takes that string value and turns it into an integer, and adds it to the list
         # calories_per_elf.
         if bool(food_item) == True:
-            item = int(food_item)
+            food_item = int(food_item)
             calories_per_elf.append(food_item)
         else:
         # When it comes across an empty list value, it sums up the calorie values it has so far in calories_per_elf, adds
