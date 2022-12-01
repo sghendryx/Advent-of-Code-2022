@@ -12,7 +12,7 @@ def main():
     all_calorie_totals = []
     
     for food_item in list_of_strings:
-        # For every item, it takes that string value and turns it into an integer, and adds it to the list
+        # For every food_item, it takes that string value and turns it into an integer, and adds it to the list
         # calories_per_elf.
         if bool(food_item) == True:
             item = int(food_item)
