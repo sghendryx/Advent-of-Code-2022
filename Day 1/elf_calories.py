@@ -19,7 +19,7 @@ def main():
             calories_per_elf.append(calorie_value)
         else:
         # When it comes across an empty list value, it sums up the calorie values it has so far in calories_per_elf, adds
-        # that total to the empty array all_calorie_totals, and then clears the elf_calorie_sum list.
+        # that total to the empty array all_calorie_totals, and then clears the calories_per_elf list.
             elf_calorie_sum = sum(calories_per_elf)
             all_calorie_totals.append(elf_calorie_sum)
             calories_per_elf.clear()
