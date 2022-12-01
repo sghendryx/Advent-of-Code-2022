@@ -4,7 +4,7 @@ def main():
     # Opens puzzle_input.txt as a list of lists
     food_items = list(csv.reader(open('puzzle_input.txt', 'r'), delimiter='|'))
 
-    # Converts List of lists to list of Strings
+    # Converts list of lists to list of strings
     # using list comprehension + join()
     list_of_strings = [''.join(item) for item in food_items]
 
