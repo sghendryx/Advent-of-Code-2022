@@ -4,7 +4,7 @@ def main():
     # Opens puzzle_input.txt as a list of lists
     food_items = list(csv.reader(open('puzzle_input.txt', 'r'), delimiter='|'))
 
-    # Converts list of lists to list of Strings
+    # Converts List of lists to list of Strings
     # using list comprehension + join()
     list_of_strings = [''.join(item) for item in food_items]
 
@@ -27,5 +27,9 @@ def main():
     # Now all we need to do is find the largest number in the new list!
     all_calorie_totals.sort()
     print("Elf with the highest calorie value is: ", all_calorie_totals[-1])
+
+    print("Sum of the calories for the 3 elves with the most calories: ", sum(all_calorie_totals[-3:]))
+
+
 
 main()
