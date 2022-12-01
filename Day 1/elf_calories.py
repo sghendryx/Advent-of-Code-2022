@@ -30,6 +30,4 @@ def main():
 
     print("Sum of the calories for the 3 elves with the most calories: ", sum(all_calorie_totals[-3:]))
 
-
-
 main()
