@@ -8,7 +8,6 @@ def main():
     # using list comprehension + join()
     list_of_strings = [''.join(item) for item in food_items]
 
-
     calories_per_elf = []
     all_calorie_totals = []
     for item in list_of_strings:
