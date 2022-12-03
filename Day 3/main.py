@@ -49,9 +49,6 @@ def priority_values():
     # Then we just take the sum of the score.
     print(sum(score))
 
-def divide_list_to_chunks(list_, n):
-    return [list_[start::n] for start in range(n)]
-
 def find_badges():
     # Opens puzzle_input.txt as a list of lists
     rucksack_contents = list(csv.reader(open('puzzle_input.txt', 'r'), delimiter='|'))
