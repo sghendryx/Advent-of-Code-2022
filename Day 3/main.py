@@ -2,13 +2,12 @@ import csv
 import string
 
 common_item_types = []
-def main():
+def get_rucksacks():
     # Opens puzzle_input.txt as a list of lists
     rucksack_contents = list(csv.reader(open('puzzle_input.txt', 'r'), delimiter='|'))
     # Converts List of lists to list of Strings
     # using list comprehension + join()
     list_of_strings = [''.join(rucksack) for rucksack in rucksack_contents]
-
     for rucksack in list_of_strings:
         # Assigns each letter in rucksack to number. Finds the middle by dividing the rucksack's
         # length by two. Adds the first half to one compartment list, and the second half to the other
@@ -50,6 +49,23 @@ def priority_values():
     # Then we just take the sum of the score.
     print(sum(score))
 
-main()
-priority_values()
+def divide_list_to_chunks(list_, n):
+    return [list_[start::n] for start in range(n)]
 
+def find_badges():
+    # Opens puzzle_input.txt as a list of lists
+    rucksack_contents = list(csv.reader(open('puzzle_input.txt', 'r'), delimiter='|'))
+    # Converts List of lists to list of Strings
+    # using list comprehension + join()
+    list_of_strings = [''.join(rucksack) for rucksack in rucksack_contents]
+    print(type(list_of_strings))
+    
+    # Use the same code as before except now it's comparing three lines instead of 2.
+    # badges_in_rucksacks = []
+    # badge = [x for x in list_of_strings[a] +
+    #                     list_of_strings[b] +
+    #                     list_of_strings[c]
+    # if x in list_of_strings[a] and x in list_of_strings[b] and x in list_of_strings[c]]
+    # badges_in_rucksacks.append(badge)
+
+find_badges()
