@@ -18,11 +18,10 @@ def compartment_contents(list_of_rucksacks):
         compartment_one = []
         compartment_two = []
         for i in range(len(rucksack)):
-            if i < (len(rucksack)/2):
+            if i < (len(rucksack) / 2):
                 compartment_one.append(rucksack[i])
             else:
                 compartment_two.append(rucksack[i])
-
         # For each item in each compartment, if the item exists in both compartments, it is assigned to the variable
         # common_item, and added to the common_item_types list.
         common_item_types = []
@@ -32,25 +31,23 @@ def compartment_contents(list_of_rucksacks):
         for item in common_item_types:
             total_score(item)
 
+
 def find_badges(list_of_rucksacks):
     # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
     chunks = []
     for i in range(0, len(list_of_rucksacks), 3):
-        chunks.append((list_of_rucksacks[i:i+3]))
-
+        chunks.append((list_of_rucksacks[i:i + 3]))
     badges_in_rucksacks = []
     for chunk in chunks:
         # Use the same code as before except now it's comparing three lines instead of 2.
         badge = [x for x in chunk[0] + chunk[1] + chunk[2] if x in chunk[0] and x in chunk[1] and x in chunk[2]]
         badges_in_rucksacks.append(badge)
-
     items = []
     for badge in badges_in_rucksacks:
         items.append(badge[0])
-
     for item in items:
         total_score(item)
- 
+
 def total_score(item):
     low_priority = dict()
     high_priority = dict()
