@@ -33,23 +33,7 @@ def compartment_contents(x):
         for items in common_item_types:
             total_score(items)
 
-def total_score(x):
-    low_priority = dict()
-    high_priority = dict()
-    # Assigns the appropriate number to the letter value for the priority set by the puzzle.
-    for index, letter in enumerate(string.ascii_lowercase):
-        low_priority[letter] = index + 1
-    for index, letter in enumerate(string.ascii_uppercase):
-        high_priority[letter] = index + 27
-    # Check to see if values from common_item_types exist within our low_priority/high_priority dictionary list.
-    # If the value exists, it adds that dictionary value to the empty array score.
-    score = []
-    if x in low_priority:
-        score.append(low_priority[x])
-    else:
-        score.append(high_priority[x])
-    print(score)
-
+            
 def find_badges(x):
     # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
     chunks = []
@@ -66,5 +50,22 @@ def find_badges(x):
     for badge in badges_in_rucksacks:
         items.append(badge[0])
     total_score(items)
+
+def total_score(x):
+    low_priority = dict()
+    high_priority = dict()
+    # Assigns the appropriate number to the letter value for the priority set by the puzzle.
+    for index, letter in enumerate(string.ascii_lowercase):
+        low_priority[letter] = index + 1
+    for index, letter in enumerate(string.ascii_uppercase):
+        high_priority[letter] = index + 27
+    # Check to see if values from common_item_types exist within our low_priority/high_priority dictionary list.
+    # If the value exists, it adds that dictionary value to the empty array score.
+    score = []
+    if x in low_priority:
+        score.append(low_priority[x])
+    else:
+        score.append(high_priority[x])
+    print(score)
 
 get_input()
