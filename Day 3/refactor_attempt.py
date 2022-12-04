@@ -29,25 +29,8 @@ def compartment_contents(list_of_rucksacks):
         common_item = [x for x in compartment_one + compartment_two if x in compartment_one and x in compartment_two]
         common_item_types.append(common_item[0])
 
-        for items in common_item_types:
-            total_score(items)
-
-def total_score(item):
-    low_priority = dict()
-    high_priority = dict()
-    # Assigns the appropriate number to the letter value for the priority set by the puzzle.
-    for index, letter in enumerate(string.ascii_lowercase):
-        low_priority[letter] = index + 1
-    for index, letter in enumerate(string.ascii_uppercase):
-        high_priority[letter] = index + 27
-    # Check to see if values from common_item_types exist within our low_priority/high_priority dictionary list.
-    # If the value exists, it adds that dictionary value to the empty array score.
-    score = []
-    if item in low_priority:
-        score.append(low_priority[item])
-    else:
-        score.append(high_priority[item])
-    print(score)
+        for item in common_item_types:
+            total_score(item)
 
 def find_badges(list_of_rucksacks):
     # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
@@ -67,5 +50,22 @@ def find_badges(list_of_rucksacks):
 
     for item in items:
         total_score(item)
+ 
+def total_score(item):
+    low_priority = dict()
+    high_priority = dict()
+    # Assigns the appropriate number to the letter value for the priority set by the puzzle.
+    for index, letter in enumerate(string.ascii_lowercase):
+        low_priority[letter] = index + 1
+    for index, letter in enumerate(string.ascii_uppercase):
+        high_priority[letter] = index + 27
+    # Check to see if values from common_item_types exist within our low_priority/high_priority dictionary list.
+    # If the value exists, it adds that dictionary value to the empty array score.
+    score = []
+    if item in low_priority:
+        score.append(low_priority[item])
+    else:
+        score.append(high_priority[item])
+    print(score)
 
 get_input()
