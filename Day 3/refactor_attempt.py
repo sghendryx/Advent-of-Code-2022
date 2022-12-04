@@ -7,7 +7,6 @@ def get_input():
     # Converts List of lists to list of Strings
     # using list comprehension + join()
     list_of_rucksacks = [''.join(rucksack) for rucksack in rucksack_contents]
-    rucksack_contents.append(list_of_rucksacks)
     compartment_contents(list_of_rucksacks)
     find_badges(list_of_rucksacks)
 
