@@ -32,20 +32,17 @@ def compartment_contents(x):
 
         for items in common_item_types:
             total_score(items)
-
             
 def find_badges(x):
     # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
     chunks = []
     for i in range(0, len(x), 3):
         chunks.append((x[i:i+3]))
-
     badges_in_rucksacks = []
     for chunk in chunks:
         # Use the same code as before except now it's comparing three lines instead of 2.
         badge = [x for x in chunk[0] + chunk[1] + chunk[2] if x in chunk[0] and x in chunk[1] and x in chunk[2]]
         badges_in_rucksacks.append(badge)
-
     items = []
     for badge in badges_in_rucksacks:
         items.append(badge[0])
