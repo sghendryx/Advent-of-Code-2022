@@ -31,7 +31,6 @@ def compartment_contents(list_of_rucksacks):
         for item in common_item_types:
             total_score(item)
 
-
 def find_badges(list_of_rucksacks):
     # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
     chunks = []
