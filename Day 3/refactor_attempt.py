@@ -7,12 +7,12 @@ def get_input():
     # Converts List of lists to list of Strings
     # using list comprehension + join()
     list_of_rucksacks = [''.join(rucksack) for rucksack in rucksack_contents]
-    # rucksack_contents.append(list_of_rucksacks)
+    rucksack_contents.append(list_of_rucksacks)
     compartment_contents(list_of_rucksacks)
     find_badges(list_of_rucksacks)
 
-def compartment_contents(x):
-    for rucksack in x:
+def compartment_contents(list_of_rucksacks):
+    for rucksack in list_of_rucksacks:
         # Assigns each letter in rucksack to number. Finds the middle by dividing the rucksack's
         # length by two. Adds the first half to one compartment list, and the second half to the other
         # compartment list.
@@ -32,23 +32,8 @@ def compartment_contents(x):
 
         for items in common_item_types:
             total_score(items)
-            
-def find_badges(x):
-    # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
-    chunks = []
-    for i in range(0, len(x), 3):
-        chunks.append((x[i:i+3]))
-    badges_in_rucksacks = []
-    for chunk in chunks:
-        # Use the same code as before except now it's comparing three lines instead of 2.
-        badge = [x for x in chunk[0] + chunk[1] + chunk[2] if x in chunk[0] and x in chunk[1] and x in chunk[2]]
-        badges_in_rucksacks.append(badge)
-    items = []
-    for badge in badges_in_rucksacks:
-        items.append(badge[0])
-    total_score(items)
 
-def total_score(x):
+def total_score(item):
     low_priority = dict()
     high_priority = dict()
     # Assigns the appropriate number to the letter value for the priority set by the puzzle.
@@ -59,10 +44,29 @@ def total_score(x):
     # Check to see if values from common_item_types exist within our low_priority/high_priority dictionary list.
     # If the value exists, it adds that dictionary value to the empty array score.
     score = []
-    if x in low_priority:
-        score.append(low_priority[x])
+    if item in low_priority:
+        score.append(low_priority[item])
     else:
-        score.append(high_priority[x])
+        score.append(high_priority[item])
     print(score)
+
+def find_badges(list_of_rucksacks):
+    # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
+    chunks = []
+    for i in range(0, len(list_of_rucksacks), 3):
+        chunks.append((list_of_rucksacks[i:i+3]))
+
+    badges_in_rucksacks = []
+    for chunk in chunks:
+        # Use the same code as before except now it's comparing three lines instead of 2.
+        badge = [x for x in chunk[0] + chunk[1] + chunk[2] if x in chunk[0] and x in chunk[1] and x in chunk[2]]
+        badges_in_rucksacks.append(badge)
+
+    items = []
+    for badge in badges_in_rucksacks:
+        items.append(badge[0])
+
+    for item in items:
+        total_score(item)
 
 get_input()
