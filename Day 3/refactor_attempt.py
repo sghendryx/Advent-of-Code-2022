@@ -1,16 +1,15 @@
-import csv
 import string
 
-def get_input():
-    # Opens puzzle_input.txt as a list of lists
-    rucksack_contents = list(csv.reader(open('puzzle_input.txt', 'r'), delimiter='|'))
-    # Converts List of lists to list of Strings
-    # using list comprehension + join()
-    list_of_rucksacks = [''.join(rucksack) for rucksack in rucksack_contents]
-    compartment_contents(list_of_rucksacks)
-    find_badges(list_of_rucksacks)
+def run():
+    # Opens puzzle_input.txt
+    with open("puzzle_input.txt", "r") as infile:
+        rucksack_contents = [l.rstrip() for l in infile]
+
+    compartment_contents(rucksack_contents)
+    find_badges(rucksack_contents)
 
 def compartment_contents(list_of_rucksacks):
+    common_item_types = []
     for rucksack in list_of_rucksacks:
         # Assigns each letter in rucksack to number. Finds the middle by dividing the rucksack's
         # length by two. Adds the first half to one compartment list, and the second half to the other
@@ -24,12 +23,11 @@ def compartment_contents(list_of_rucksacks):
                 compartment_two.append(rucksack[i])
         # For each item in each compartment, if the item exists in both compartments, it is assigned to the variable
         # common_item, and added to the common_item_types list.
-        common_item_types = []
-        common_item = [x for x in compartment_one + compartment_two if x in compartment_one and x in compartment_two]
+        common_item = [x for x in compartment_one if x in compartment_one and x in compartment_two]
         common_item_types.append(common_item[0])
 
-        for item in common_item_types:
-            total_score(item)
+    scores = [ total_score(item) for item in common_item_types ]
+    print(sum(scores))
 
 def find_badges(list_of_rucksacks):
     # Chunks the rucksacks into sets of 3 and assigns them to the array chunks.
@@ -39,7 +37,7 @@ def find_badges(list_of_rucksacks):
     badges_in_rucksacks = []
     for chunk in chunks:
         # Use the same code as before except now it's comparing three lines instead of 2.
-        badge = [x for x in chunk[0] + chunk[1] + chunk[2] if x in chunk[0] and x in chunk[1] and x in chunk[2]]
+        badge = [x for x in chunk[0] if x in chunk[0] and x in chunk[1] and x in chunk[2]]
         badges_in_rucksacks.append(badge)
     items = []
     for badge in badges_in_rucksacks:
@@ -48,20 +46,13 @@ def find_badges(list_of_rucksacks):
         total_score(item)
 
 def total_score(item):
-    low_priority = dict()
-    high_priority = dict()
-    # Assigns the appropriate number to the letter value for the priority set by the puzzle.
-    for index, letter in enumerate(string.ascii_lowercase):
-        low_priority[letter] = index + 1
-    for index, letter in enumerate(string.ascii_uppercase):
-        high_priority[letter] = index + 27
-    # Check to see if values from common_item_types exist within our low_priority/high_priority dictionary list.
-    # If the value exists, it adds that dictionary value to the empty array score.
-    score = []
-    if item in low_priority:
-        score.append(low_priority[item])
-    else:
-        score.append(high_priority[item])
-    print(score)
+    priorities = dict()
 
-get_input()
+    for index, letter in enumerate(string.ascii_lowercase):
+        priorities[letter] = index + 1
+    for index, letter in enumerate(string.ascii_uppercase):
+        priorities[letter] = index + 27
+
+    return priorities[item]
+
+run()
